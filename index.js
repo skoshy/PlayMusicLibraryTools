@@ -59,10 +59,10 @@ function getLibrary() {
         getTracks(library.nextPageToken);
       } else {
         console.log('Writing to files...');
-        fs.writeFile("output/library.json", JSON.stringify(allTracks), function() {});
-        fs.writeFile("output/library.meta", "Tracks: "+trackCount, function() {});
-        fs.writeFile("output/deletedTracks.json", JSON.stringify(deletedTracks), function() {});
-        fs.writeFile("output/deletedTracks.meta", "Tracks: "+deletedTracks.length, function() {});
+        fs.writeFile("output/library.json", JSON.stringify(allTracks, null, 2)+"\n", function() {});
+        fs.writeFile("output/library.meta", "Tracks: "+trackCount+"\n", function() {});
+        fs.writeFile("output/deletedTracks.json", JSON.stringify(deletedTracks, null, 2)+"\n", function() {});
+        fs.writeFile("output/deletedTracks.meta", "Tracks: "+deletedTracks.length+"\n", function() {});
         console.log('You have '+allTracks.length+' total track(s) in your library');
         console.log('You have '+deletedTracks.length+' deleted track(s) in your library');
       }
