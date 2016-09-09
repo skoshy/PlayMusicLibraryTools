@@ -61,6 +61,8 @@ function getLibrary() {
         console.log('Writing to files...');
         fs.writeFile("output/library.json", JSON.stringify(allTracks), function() {});
         fs.writeFile("output/library.meta", "Tracks: "+trackCount, function() {});
+        fs.writeFile("output/deletedTracks.json", JSON.stringify(deletedTracks), function() {});
+        fs.writeFile("output/deletedTracks.meta", "Tracks: "+deletedTracks.length, function() {});
         console.log('You have '+allTracks.length+' total track(s) in your library');
         console.log('You have '+deletedTracks.length+' deleted track(s) in your library');
       }
