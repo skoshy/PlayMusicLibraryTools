@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dateformat": "^1.0.12",
     "playmusic": "^2.2.0"
   }
 }

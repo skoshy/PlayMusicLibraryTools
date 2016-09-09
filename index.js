@@ -1,5 +1,8 @@
 var PlayMusic = require('playmusic');
 var fs = require('fs');
+var dateFormat = require('dateformat');
+var currentDate = new Date();
+var currentDateStr = dateFormat(currentDate, "yyyy-mm-dd-hh-MM-ss");
 
 // make the output directory
 fs.mkdir('output', function(err){});
@@ -59,10 +62,10 @@ function getLibrary() {
         getTracks(library.nextPageToken);
       } else {
         console.log('Writing to files...');
-        fs.writeFile("output/library.json", JSON.stringify(allTracks, null, 2)+"\n", function() {});
-        fs.writeFile("output/library.meta", "Tracks: "+trackCount+"\n", function() {});
-        fs.writeFile("output/deletedTracks.json", JSON.stringify(deletedTracks, null, 2)+"\n", function() {});
-        fs.writeFile("output/deletedTracks.meta", "Tracks: "+deletedTracks.length+"\n", function() {});
+        fs.writeFile("output/library."+currentDateStr+".json", JSON.stringify(allTracks, null, 2)+"\n", function() {});
+        fs.writeFile("output/library."+currentDateStr+".meta", "Tracks: "+trackCount+"\n", function() {});
+        fs.writeFile("output/deletedTracks."+currentDateStr+".json", JSON.stringify(deletedTracks, null, 2)+"\n", function() {});
+        fs.writeFile("output/deletedTracks."+currentDateStr+".meta", "Tracks: "+deletedTracks.length+"\n", function() {});
         console.log('You have '+allTracks.length+' total track(s) in your library');
         console.log('You have '+deletedTracks.length+' deleted track(s) in your library');
       }
